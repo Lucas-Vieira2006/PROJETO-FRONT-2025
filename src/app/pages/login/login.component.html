@@ -1,0 +1,41 @@
+<section class="auth">
+  <div class="card">
+    <div class="brand">
+      <div class="logo">🚗</div>
+      <h1>Totem Locadora</h1>
+      <p class="subtitle">Acesse sua conta</p>
+    </div>
+
+    <form (ngSubmit)="onLogin()" autocomplete="off">
+      <label>
+        <span>Usuário</span>
+        <input
+          type="text"
+          [(ngModel)]="username"
+          name="username"
+          placeholder="Digite seu usuário"
+          required
+        />
+      </label>
+
+      <label>
+        <span>Senha</span>
+        <input
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="••••••••"
+          required
+        />
+      </label>
+
+      <button type="submit" class="btn" [disabled]="!username || !password">
+        Entrar
+      </button>
+    </form>
+
+    <p class="hint">
+      Dica para testes: <code>admin</code> / <code>123</code>
+    </p>
+  </div>
+</section>
