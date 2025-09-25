@@ -1,3 +1,5 @@
 .form { max-width: 420px; display: grid; gap: 10px; }
 input { padding: 8px; border:1px solid #e5e7eb; border-radius:8px; }
-button { padding:10px 14px; border:0; border-radius:8px; background:#0d47a1; color:#fff; }
+.actions { display:flex; gap:8px; margin-top:6px; }
+button { padding:10px 14px; border:0; border-radius:8px; background:#0d47a1; color:#fff; cursor:pointer; }
+button.secondary { background:#6b7280; }

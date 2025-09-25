@@ -1,14 +1,38 @@
-<h2>📝 Cadastrar veículo</h2>
+<h2 *ngIf="!id">Novo Veículo</h2>
+<h2 *ngIf="id">Editar Veículo</h2>
 
-<form (ngSubmit)="salvar()" #form="ngForm" class="form">
-  <label>Modelo</label>
-  <input type="text" [(ngModel)]="modelo" name="modelo" required />
+<form (ngSubmit)="salvar()" #form="ngForm">
+  <div>
+    <label>Modelo:</label>
+    <input type="text" [(ngModel)]="modelo" name="modelo" required />
+  </div>
 
-  <label>Placa</label>
-  <input type="text" [(ngModel)]="placa" name="placa" required />
+  <div>
+    <label>Placa:</label>
+    <input type="text" [(ngModel)]="placa" name="placa" required />
+  </div>
 
-  <label>Ano</label>
-  <input type="number" [(ngModel)]="ano" name="ano" />
+  <div>
+    <label>Ano:</label>
+    <input type="number" [(ngModel)]="ano" name="ano" />
+  </div>
 
-  <button type="submit" [disabled]="form.invalid">Salvar</button>
+  <div>
+    <label>Categoria</label>
+    <input [(ngModel)]="categoria" name="categoria" />
+  </div>
+
+  <div>
+    <label>Valor por Hora</label>
+    <input type="number" [(ngModel)]="valorHora" name="valorHora" />
+  </div>
+
+
+  <div class="acoes">
+    <button type="submit" [disabled]="form.invalid">Salvar</button>
+    <button type="button" (click)="cancelar()">Cancelar</button>
+  </div>
+
+
+
 </form>

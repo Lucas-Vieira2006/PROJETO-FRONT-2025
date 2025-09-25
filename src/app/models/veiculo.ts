@@ -1,7 +1,9 @@
 export interface Veiculo {
-  id: number;
+  id?: number;
   modelo: string;
-  marca: string;
-  ano: number;
-  disponivel: boolean;
+  placa: string;
+  ano?: number;
+  disponivel?: boolean; 
+  categoria: string;
+  valorHora: number;
 }

@@ -1,4 +1,19 @@
-<section class="page">
-  <h2>🚙 Veículos</h2>
-  <p>Placeholder da listagem de veículos. (CRUD será feito depois.)</p>
-</section>
+<h2>Lista de Veículos</h2>
+
+<div class="acoes">
+  <button class="btn" (click)="carregar()">↻ Atualizar</button>
+  <button class="btn secondary" (click)="carregarDisponiveis()">Disponíveis</button>
+  <button class="btn primary" routerLink="/veiculos/novo">+ Novo Veículo</button>
+</div>
+
+<div *ngIf="loading">Carregando veículos...</div>
+
+<ul *ngIf="!loading && veiculos.length > 0">
+  <li *ngFor="let v of veiculos">
+    {{ v.modelo }} - {{ v.placa }} ({{ v.ano }})
+    <button class="btn small" [routerLink]="['/veiculos/editar', v.id]">Editar</button>
+    <button class="btn small danger" (click)="remover(v)">Excluir</button>
+  </li>
+</ul>
+
+<p *ngIf="!loading && veiculos.length === 0">Nenhum veículo encontrado.</p>
