@@ -1,36 +1,26 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from '../../core/auth.service';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms'; // <<< IMPORTA ISSO
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule], // <<< ADICIONA AQUI
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  username = '';
-  password = '';
+  usuario: string = '';
+  senha: string = '';
 
-  constructor(
-    private auth: AuthService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
+  constructor(private router: Router) {}
 
-  onLogin() {
-    this.auth.login(this.username, this.password).subscribe({
-      next: (res: any) => {
-        localStorage.setItem('token', res.token);
-        const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/home';
-        this.router.navigateByUrl(returnUrl);
-      },
-      error: () => {
-        alert('❌ Usuário ou senha inválidos!');
-      }
-    });
+  login() {
+    if (this.usuario === 'admin' && this.senha === '123') {
+      localStorage.setItem('token', 'fake-token');
+      this.router.navigateByUrl('/home');
+    } else {
+      alert('Usuário ou senha inválidos');
+    }
   }
 }
