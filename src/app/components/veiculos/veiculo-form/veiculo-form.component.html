@@ -1,0 +1,14 @@
+<h2>📝 Cadastrar veículo</h2>
+
+<form (ngSubmit)="salvar()" #form="ngForm" class="form">
+  <label>Modelo</label>
+  <input type="text" [(ngModel)]="modelo" name="modelo" required />
+
+  <label>Placa</label>
+  <input type="text" [(ngModel)]="placa" name="placa" required />
+
+  <label>Ano</label>
+  <input type="number" [(ngModel)]="ano" name="ano" />
+
+  <button type="submit" [disabled]="form.invalid">Salvar</button>
+</form>

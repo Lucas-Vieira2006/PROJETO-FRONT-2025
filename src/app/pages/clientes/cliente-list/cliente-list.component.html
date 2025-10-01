@@ -1,0 +1,25 @@
+<section class="page">
+  <h2>👤 Clientes</h2>
+
+  <div class="controls">
+    <input [(ngModel)]="filtro" placeholder="Pesquisar por nome" />
+    <button (click)="pesquisar()">Pesquisar</button>
+    <a routerLink="/clientes/novo" class="btn">+ Novo cliente</a>
+  </div>
+
+  <table class="table">
+    <thead><tr><th>Nome</th><th>CPF</th><th>Email</th><th>Telefone</th><th></th></tr></thead>
+    <tbody>
+      <tr *ngFor="let c of clientes">
+        <td>{{c.nome}}</td>
+        <td>{{c.cpf}}</td>
+        <td>{{c.email}}</td>
+        <td>{{c.telefone}}</td>
+        <td class="actions">
+          <a [routerLink]="['/clientes', c.id]">Editar</a>
+          <button (click)="excluir(c)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

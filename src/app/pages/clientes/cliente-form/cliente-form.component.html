@@ -1,0 +1,26 @@
+<section class="page">
+  <h2 *ngIf="!isEdit">➕ Novo cliente</h2>
+  <h2 *ngIf="isEdit">✏️ Editar cliente</h2>
+
+  <form (ngSubmit)="salvar()" #f="ngForm">
+    <label>Nome</label>
+    <input name="nome" [(ngModel)]="cliente.nome" required />
+
+    <label>CPF</label>
+    <input name="cpf" [(ngModel)]="cliente.cpf" />
+
+    <label>Email</label>
+    <input name="email" [(ngModel)]="cliente.email" />
+
+    <label>Telefone</label>
+    <input name="telefone" [(ngModel)]="cliente.telefone" />
+
+    <label>Endereço</label>
+    <input name="endereco" [(ngModel)]="cliente.endereco" />
+
+    <div class="actions">
+      <button type="submit">Salvar</button>
+      <a routerLink="/clientes">Cancelar</a>
+    </div>
+  </form>
+</section>
