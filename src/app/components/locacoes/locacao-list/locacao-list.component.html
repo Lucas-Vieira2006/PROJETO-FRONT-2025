@@ -1,0 +1,18 @@
+<h2>Lista de Locações</h2>
+
+<div class="acoes">
+  <button class="btn" (click)="carregar()">↻ Atualizar</button>
+  <button class="btn primary" routerLink="/locacoes/nova">+ Nova Locação</button>
+</div>
+
+<div *ngIf="loading">Carregando locações...</div>
+
+<ul *ngIf="!loading && locacoes.length > 0">
+  <li *ngFor="let l of locacoes">
+    Locação #{{ l.id }} - Veículo: {{ l.veiculoId }} - Cliente: {{ l.clienteId }}
+    <button class="btn small" [routerLink]="['/locacoes/editar', l.id]">Editar</button>
+    <button class="btn small danger" (click)="remover(l)">Excluir</button>
+  </li>
+</ul>
+
+<p *ngIf="!loading && locacoes.length === 0">Nenhuma locação encontrada.</p>
