@@ -1,12 +1,20 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
-  standalone: true,
   selector: 'app-home',
-  imports: [CommonModule, RouterLink],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {}
+export class HomeComponent {
+  constructor(private router: Router) {}
+
+  logout() {
+    // limpa token/sessão se você estiver usando autenticação
+    this.router.navigate(['/login']);
+  }
+
+  goTo(path: string) {
+    this.router.navigate(['/' + path]);
+  }
+}

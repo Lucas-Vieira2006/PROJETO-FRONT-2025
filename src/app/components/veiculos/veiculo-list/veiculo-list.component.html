@@ -1,19 +1,40 @@
-<h2>Lista de Veículos</h2>
+<div class="list-container">
+  <h2>Lista de Veículos</h2>
 
-<div class="acoes">
-  <button class="btn" (click)="carregar()">↻ Atualizar</button>
-  <button class="btn secondary" (click)="carregarDisponiveis()">Disponíveis</button>
-  <button class="btn primary" routerLink="/veiculos/novo">+ Novo Veículo</button>
+  <div class="button-group">
+    <button (click)="carregar()" class="btn atualizar">🔄 Atualizar</button>
+    <button (click)="carregarDisponiveis()" class="btn disponiveis">✅ Disponíveis</button>
+    <button (click)="router.navigateByUrl('/veiculos/novo')" class="btn novo">➕ Novo Veículo</button>
+    <button (click)="router.navigateByUrl('/home')" class="btn voltar">⬅ Voltar</button>
+  </div>
+
+  <div class="veiculos-list">
+    <p *ngIf="veiculos.length === 0">Nenhum veículo encontrado.</p>
+
+    <table *ngIf="veiculos.length > 0">
+      <thead>
+        <tr>
+          <th>Modelo</th>
+          <th>Placa</th>
+          <th>Ano</th>
+          <th>Categoria</th>
+          <th>Valor Hora</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let v of veiculos">
+          <td>{{ v.modelo }}</td>
+          <td>{{ v.placa }}</td>
+          <td>{{ v.ano }}</td>
+          <td>{{ v.categoria }}</td>
+          <td>R$ {{ v.valorHora }}</td>
+          <td>
+            <button class="btn editar" (click)="router.navigateByUrl('/veiculos/editar/' + v.id)">✏ Editar</button>
+            <button class="btn excluir" (click)="remover(v)">🗑 Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-<div *ngIf="loading">Carregando veículos...</div>
-
-<ul *ngIf="!loading && veiculos.length > 0">
-  <li *ngFor="let v of veiculos">
-    {{ v.modelo }} - {{ v.placa }} ({{ v.ano }})
-    <button class="btn small" [routerLink]="['/veiculos/editar', v.id]">Editar</button>
-    <button class="btn small danger" (click)="remover(v)">Excluir</button>
-  </li>
-</ul>
-
-<p *ngIf="!loading && veiculos.length === 0">Nenhum veículo encontrado.</p>

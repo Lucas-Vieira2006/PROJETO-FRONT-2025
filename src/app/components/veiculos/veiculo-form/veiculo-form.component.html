@@ -1,38 +1,41 @@
-<h2 *ngIf="!id">Novo Veículo</h2>
-<h2 *ngIf="id">Editar Veículo</h2>
+<div class="form-container">
+  <h2>Novo Veículo</h2>
 
-<form (ngSubmit)="salvar()" #form="ngForm">
-  <div>
-    <label>Modelo:</label>
-    <input type="text" [(ngModel)]="modelo" name="modelo" required />
-  </div>
+  <form>
+    <div class="form-group">
+      <label for="modelo">Modelo</label>
+      <input id="modelo" [(ngModel)]="modelo" name="modelo" type="text" />
+    </div>
 
-  <div>
-    <label>Placa:</label>
-    <input type="text" [(ngModel)]="placa" name="placa" required />
-  </div>
+    <div class="form-group">
+      <label for="placa">Placa</label>
+      <input id="placa" [(ngModel)]="placa" name="placa" type="text" />
+    </div>
 
-  <div>
-    <label>Ano:</label>
-    <input type="number" [(ngModel)]="ano" name="ano" />
-  </div>
+    <div class="form-group">
+      <label for="ano">Ano</label>
+      <input id="ano" [(ngModel)]="ano" name="ano" type="number" class="form-control" inputmode="numeric" pattern="[0-9]*" />
+    </div>
 
-  <div>
-    <label>Categoria</label>
-    <input [(ngModel)]="categoria" name="categoria" />
-  </div>
+    <div class="form-group">
+      <label for="categoria">Categoria</label>
+      <select id="categoria" [(ngModel)]="categoria" name="categoria">
+        <option value="CARRO">Carro</option>
+        <option value="MOTO">Moto</option>
+        <option value="SUV">SUV</option>
+        <option value="UTILITARIO">Utilitário</option>
+      </select>
+    </div>
 
-  <div>
-    <label>Valor por Hora</label>
-    <input type="number" [(ngModel)]="valorHora" name="valorHora" />
-  </div>
+    <div class="form-group">
+      <label for="valorHora">Valor Hora</label>
+      <input id="valorHora" [(ngModel)]="valorHora" name="valorHora" type="number" step="0.01" />
+    </div>
 
-
-  <div class="acoes">
-    <button type="submit" [disabled]="form.invalid">Salvar</button>
-    <button type="button" (click)="cancelar()">Cancelar</button>
-  </div>
-
-
-
-</form>
+    <div class="button-group">
+      <button type="button" class="btn salvar" (click)="salvar()">💾 Salvar</button>
+      <button type="button" class="btn cancelar" (click)="cancelar()">❌ Cancelar</button>
+      <button type="button" class="btn voltar" (click)="router.navigateByUrl('/veiculos')">⬅ Voltar</button>
+    </div>
+  </form>
+</div>

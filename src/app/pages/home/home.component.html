@@ -1,27 +1,24 @@
+<div class="home-container">
+  <header class="home-header">
+    <h2>Totem Locadora</h2>
+    <button class="logout" (click)="logout()">Sair</button>
+  </header>
 
-
-<section class="dashboard">
-  <a class="card" routerLink="/veiculos">
-    <div class="icon">🚙</div>
-    <div>
-      <h3>Veículos</h3>
-      <small>Cadastro e listagem</small>
+  <main class="home-main">
+    <h1>Bem-vindo 👋</h1>
+    <div class="cards">
+      <div class="card" (click)="goTo('veiculos')">
+        <h3>🚗 Veículos</h3>
+        <p>Cadastro e listagem</p>
+      </div>
+      <div class="card" (click)="goTo('clientes')">
+        <h3>👤 Clientes</h3>
+        <p>Cadastro e listagem</p>
+      </div>
+      <div class="card" (click)="goTo('locacoes')">
+        <h3>📑 Locações</h3>
+        <p>Gerencie contratos</p>
+      </div>
     </div>
-  </a>
-
-  <a class="card" routerLink="/clientes">
-    <div class="icon">👤</div>
-    <div>
-      <h3>Clientes</h3>
-      <small>Cadastro e listagem</small>
-    </div>
-  </a>
-
-  <a class="card" routerLink="/locacoes">
-    <div class="icon">🧾</div>
-    <div>
-      <h3>Locações</h3>
-      <small>Gerencie contratos</small>
-    </div>
-  </a>
-</section>
+  </main>
+</div>

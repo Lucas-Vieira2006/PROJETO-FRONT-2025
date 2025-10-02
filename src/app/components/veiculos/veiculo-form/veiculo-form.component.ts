@@ -13,17 +13,16 @@ import { Veiculo } from '../../../models/veiculo';
   styleUrls: ['./veiculo-form.component.scss']
 })
 export class VeiculoFormComponent implements OnInit {
-  private route = inject(ActivatedRoute);
-  private router = inject(Router);
   private service = inject(VeiculoService);
+  private route = inject(ActivatedRoute);
+  public router = inject(Router);   // <-- public para usar no HTML
 
   id?: number;
   modelo = '';
   placa = '';
   ano?: number;
   categoria = '';
-  valorHora: number = 0;
-
+  valorHora = 0;
 
   ngOnInit() {
     const paramId = this.route.snapshot.paramMap.get('id');
@@ -34,6 +33,8 @@ export class VeiculoFormComponent implements OnInit {
           this.modelo = v.modelo;
           this.placa = v.placa;
           this.ano = v.ano;
+          this.categoria = v.categoria;
+          this.valorHora = v.valorHora;
         },
         error: () => alert('Erro ao carregar veículo')
       });
@@ -41,7 +42,13 @@ export class VeiculoFormComponent implements OnInit {
   }
 
   salvar() {
-    const dto: Veiculo = { id: this.id, modelo: this.modelo, placa: this.placa, ano: this.ano, categoria: this.categoria, valorHora: this.valorHora};
+    const dto: Veiculo = { 
+      modelo: this.modelo, 
+      placa: this.placa, 
+      ano: Number(this.ano), 
+      categoria: this.categoria, 
+      valorHora: this.valorHora 
+    };
 
     const req = this.id
       ? this.service.update(this.id, dto)

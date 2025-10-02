@@ -1,5 +1,59 @@
-.form { max-width: 420px; display: grid; gap: 10px; }
-input { padding: 8px; border:1px solid #e5e7eb; border-radius:8px; }
-.actions { display:flex; gap:8px; margin-top:6px; }
-button { padding:10px 14px; border:0; border-radius:8px; background:#0d47a1; color:#fff; cursor:pointer; }
-button.secondary { background:#6b7280; }
+.form-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 5px;
+      color: #555;
+    }
+
+    input,
+    select {
+      display: block;
+      width: 100%;       // 👈 ocupa 100% igual os inputs
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      box-sizing: border-box; // 👈 garante que o padding não quebre o layout
+    }
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    .btn {
+      flex: 1;
+      margin: 0 5px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      color: white;
+      transition: background 0.2s;
+    }
+
+    .salvar { background-color: #4caf50; &:hover { background-color: #388e3c; } }
+    .cancelar { background-color: #f44336; &:hover { background-color: #d32f2f; } }
+    .voltar { background-color: #607d8b; &:hover { background-color: #455a64; } }
+  }
+}
