@@ -39,6 +39,30 @@ export const routes: Routes = [
           },
         ],
       },
+      // 🔥 ADICIONE AS ROTAS DA LOCAÇÃO AQUI 🔥
+      {
+        path: 'locacoes',
+        children: [
+          {
+            path: '',
+            loadComponent: () =>
+              import('./components/locacoes/locacao-list/locacao-list.component')
+                .then(m => m.LocacaoListComponent),
+          },
+          {
+            path: 'nova',
+            loadComponent: () =>
+              import('./components/locacoes/locacao-form/locacao-form.component')
+                .then(m => m.LocacaoFormComponent),
+          },
+          {
+            path: 'editar/:id',
+            loadComponent: () =>
+              import('./components/locacoes/locacao-form/locacao-form.component')
+                .then(m => m.LocacaoFormComponent),
+          },
+        ],
+      },
       { path: '', pathMatch: 'full', redirectTo: 'home' },
     ],
   },
