@@ -15,7 +15,7 @@ import { Veiculo } from '../../../models/veiculo';
 export class VeiculoFormComponent implements OnInit {
   private service = inject(VeiculoService);
   private route = inject(ActivatedRoute);
-  public router = inject(Router);   // <-- public para usar no HTML
+  public router = inject(Router);   
 
   id?: number;
   modelo = '';

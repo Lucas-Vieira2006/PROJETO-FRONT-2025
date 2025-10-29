@@ -1,0 +1,56 @@
+<div class="page">
+  <div class="card">
+    <h1>{{ titulo }}</h1>
+
+    <form #f="ngForm" (ngSubmit)="salvar()" autocomplete="off">
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input
+          id="nome"
+          name="nome"
+          [(ngModel)]="modelo.nome"
+          type="text"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="cpf">CPF</label>
+        <input
+          id="cpf"
+          name="cpf"
+          [(ngModel)]="modelo.cpf"
+          type="text"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="telefone">Telefone</label>
+        <input
+          id="telefone"
+          name="telefone"
+          [(ngModel)]="modelo.telefone"
+          type="text"
+          class="form-control"
+        />
+      </div>
+
+      <div class="button-group">
+        <button type="submit" class="btn btn-success" [disabled]="f.invalid">
+          💾 Salvar
+        </button>
+
+        <button type="button" class="btn btn-danger" (click)="resetar(f)">
+          ✖ Cancelar
+        </button>
+
+        <button type="button" class="btn btn-secondary" (click)="cancelar()">
+          ← Voltar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
