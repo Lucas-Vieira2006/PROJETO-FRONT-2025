@@ -1,10 +1,12 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
-import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
 import { VeiculoListComponent } from './components/veiculos/veiculo-list/veiculo-list.component';
 import { VeiculoFormComponent } from './components/veiculos/veiculo-form/veiculo-form.component';
 import { ClienteListComponent } from './components/clientes/cliente-list/cliente-list.component';
 import { ClienteFormComponent } from './components/clientes/cliente-form/cliente-form.component';
+import { AuthGuard } from './core/auth.guard';
+
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -21,5 +23,5 @@ export const routes: Routes = [
   { path: 'clientes/novo', component: ClienteFormComponent },
   { path: 'clientes/editar/:id', component: ClienteFormComponent },
 
-  { path: '**', redirectTo: 'home' }
+  { path: '**', redirectTo: 'login' }
 ];
