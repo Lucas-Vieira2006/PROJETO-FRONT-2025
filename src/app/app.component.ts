@@ -6,14 +6,13 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  imports: [RouterOutlet] // <<--- aqui!
+  imports: [RouterOutlet]
 })
 export class AppComponent {
   constructor() {}
 
   logout() {
-    localStorage.removeItem('token'); // limpa sessão
-    // aqui você pode redirecionar manualmente se quiser
+    localStorage.removeItem('token'); 
     window.location.href = '/login';
   }
 }
