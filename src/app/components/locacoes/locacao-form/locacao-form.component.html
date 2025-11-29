@@ -1,0 +1,43 @@
+<h2 *ngIf="!id">Nova Locação</h2>
+<h2 *ngIf="id">Editar Locação</h2>
+
+<form (ngSubmit)="salvar()" #form="ngForm">
+  <div>
+    <label>ID do Veículo:</label>
+    <input type="number" [(ngModel)]="veiculoId" name="veiculoId" required />
+  </div>
+
+  <div>
+    <label>ID do Cliente:</label>
+    <input type="number" [(ngModel)]="clienteId" name="clienteId" required />
+  </div>
+
+  <div>
+    <label>Data Início:</label>
+    <input type="date" [(ngModel)]="dataInicio" name="dataInicio" required />
+  </div>
+
+  <div>
+    <label>Data Fim:</label>
+    <input type="date" [(ngModel)]="dataFim" name="dataFim" required />
+  </div>
+
+  <div>
+    <label>Valor Total:</label>
+    <input type="number" [(ngModel)]="valorTotal" name="valorTotal" />
+  </div>
+
+  <div>
+    <label>Status:</label>
+    <select [(ngModel)]="status" name="status">
+      <option value="ATIVA">Ativa</option>
+      <option value="FINALIZADA">Finalizada</option>
+      <option value="CANCELADA">Cancelada</option>
+    </select>
+  </div>
+
+  <div class="acoes">
+    <button type="submit" [disabled]="form.invalid">Salvar</button>
+    <button type="button" (click)="cancelar()">Cancelar</button>
+  </div>
+</form>

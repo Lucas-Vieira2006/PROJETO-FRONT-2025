@@ -1,0 +1,22 @@
+<div class="card">
+  <h2 class="titulo">Minhas Locações</h2>
+
+  <button class="btn atualizar" (click)="buscarMinhasLocacoes()">
+    🔄 Atualizar
+  </button>
+
+  <div *ngIf="loading" class="mensagem">Carregando...</div>
+
+  <div *ngIf="!loading && locacoes.length === 0" class="mensagem">
+    Você ainda não fez nenhuma locação.
+  </div>
+
+  <div class="lista">
+    <div *ngFor="let l of locacoes" class="item">
+      <p><strong>Veículo:</strong> {{ l.veiculo?.modelo }}</p>
+      <p><strong>Horas:</strong> {{ l.horas }}</p>
+      <p><strong>Valor Total:</strong> R$ {{ l.valorTotal }}</p>
+      <p><strong>Data:</strong> {{ l.dataHora }}</p>
+    </div>
+  </div>
+</div>

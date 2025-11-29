@@ -1,0 +1,21 @@
+<div class="card">
+  <h2 class="titulo">Veículos Disponíveis</h2>
+
+  <button class="btn atualizar" (click)="buscarDisponiveis()">
+    🔄 Atualizar
+  </button>
+
+  <div *ngIf="loading" class="mensagem">Carregando...</div>
+
+  <div *ngIf="!loading && veiculos.length === 0" class="mensagem">
+    Nenhum veículo disponível.
+  </div>
+
+  <div class="lista">
+    <div *ngFor="let v of veiculos" class="item">
+      <p><strong>Modelo:</strong> {{ v.modelo }}</p>
+      <p><strong>Placa:</strong> {{ v.placa }}</p>
+      <p><strong>Valor/Hora:</strong> R$ {{ v.valorHora }}</p>
+    </div>
+  </div>
+</div>

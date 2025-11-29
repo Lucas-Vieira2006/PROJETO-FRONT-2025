@@ -1,0 +1,29 @@
+<div class="home">
+  <header class="topbar">
+    <h1>Bem-vindo 👋</h1>
+    <button class="logout" routerLink="/login">Sair</button>
+  </header>
+
+  <section class="cards">
+    <!-- Veículos -->
+    <a class="card" routerLink="/veiculos">
+      <div class="icon">🚗</div>
+      <div class="title">Veículos</div>
+      <div class="subtitle">Cadastro e listagem</div>
+    </a>
+
+    <!-- Clientes (agora clicável e com a mesma classe .card) -->
+    <a class="card" routerLink="/clientes">
+      <div class="icon">👤</div>
+      <div class="title">Clientes</div>
+      <div class="subtitle">Cadastro e listagem</div>
+    </a>
+
+    <!-- Locações (deixa pronto se você for implementar depois) -->
+    <a class="card disabled" routerLink="/locacoes">
+      <div class="icon">🧾</div>
+      <div class="title">Locações</div>
+      <div class="subtitle">Gerencie contratos</div>
+    </a>
+  </section>
+</div>
