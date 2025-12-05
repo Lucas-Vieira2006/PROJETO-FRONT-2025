@@ -5,7 +5,7 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements CanActivate {
+export class ClienteGuard implements CanActivate {
 
   constructor(private auth: AuthService, private router: Router) {}
 
@@ -13,12 +13,10 @@ export class AdminGuard implements CanActivate {
 
     const role = this.auth.getRole();
 
-    // 🔥 ROLE enviada pelo backend = ROLE_ADMIN
-    if (role === 'ROLE_ADMIN') {
+    if (role === 'ROLE_USER') {
       return true;
     }
 
-    // não é admin → manda pro login ou rota cliente
     this.router.navigate(['/login']);
     return false;
   }

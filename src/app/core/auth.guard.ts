@@ -13,11 +13,30 @@ export class AuthGuard implements CanActivate {
 
     const token = this.auth.getToken();
 
-    if (token) {
-      return true;
+    if (!token) {
+      this.router.navigate(['/login']);
+      return false;
     }
 
-    this.router.navigate(['/login']);
-    return false;
+    // 🔥 verificar se o token é válido (não expirou / estrutura ok)
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+
+      // exp é em segundos → converter para milissegundos
+      const exp = payload.exp * 1000;  
+
+      if (Date.now() > exp) {
+        // token expirou → limpar sessão e exigir login
+        this.auth.logout();
+        return false;
+      }
+
+      return true;
+
+    } catch (e) {
+      // token corrompido → NAO deixa passar
+      this.auth.logout();
+      return false;
+    }
   }
 }

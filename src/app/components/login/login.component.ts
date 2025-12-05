@@ -25,22 +25,18 @@ export class LoginComponent {
 
     this.auth.login({ username: this.username, password: this.password }).subscribe({
       next: (resp: any) => {
-        const token = resp.token;
 
-        if (!token) {
-          this.error = true;
-          this.loading = false;
-          return;
-        }
+        // salva token + role + username
+        this.auth.saveSession(resp);
 
-        this.auth.saveToken(token);
-        const role = this.auth.getRole();
+        const role = resp.role;
 
-        if (role === 'ADMIN') {
+        if (role === 'ROLE_ADMIN') {
           this.router.navigate(['/admin/home']);
         } else {
           this.router.navigate(['/cliente/veiculos']);
         }
+
       },
       error: () => {
         this.error = true;
